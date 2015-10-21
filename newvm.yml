@@ -1,0 +1,14 @@
+---
+- name: Install New Software  
+  hosts: sparkvm
+  vars:
+            user: iaicto7,
+            group: iaicto7,
+            ansible_ssh_user: iaicto7
+  roles: 
+  - { role: ansiblebit.oracle-java,
+      oracle_java_set_as_default: yes,
+      oracle_java_version_string: "1.8.0_45",
+      sudo: yes
+     }
+  - sane
