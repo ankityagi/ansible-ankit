@@ -4,7 +4,7 @@
 - name: run 'apt-get update'
   apt: 
     update_cache=yes 
-    cache_valid_time={{ apt_get_update_valid_time }}
+#    cache_valid_time={{ apt_get_update_valid_time }}
   sudo: yes
   tags:
       - sane 
@@ -90,6 +90,7 @@
       - git
       - unzip
       - byobu
+      - gedit
   sudo: yes
   tags:
       - sane

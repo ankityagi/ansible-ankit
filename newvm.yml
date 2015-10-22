@@ -2,13 +2,21 @@
 - name: Install New Software  
   hosts: sparkvm
   vars:
-            user: iaicto7,
-            group: iaicto7,
+            user: iaicto7
+            group: iaicto7
             ansible_ssh_user: iaicto7
   roles: 
-  - { role: ansiblebit.oracle-java,
-      oracle_java_set_as_default: yes,
-      oracle_java_version_string: "1.8.0_45",
-      sudo: yes
-     }
-  - sane
+#  - { role: ansiblebit.oracle-java,
+#      oracle_java_set_as_default: yes,
+#      oracle_java_version_string: "1.8.0_45",
+#      sudo: yes
+#     }
+#  - {role: sane,
+#      apt_get_update_valid_time : "Etc/UTC"
+#     }
+  - {role: ansible-role-eclipse,
+     eclipse_release_name: "neon",
+     eclipse_release_version: "M2",
+     eclipse_dir_tmp: "/tmp/eclipse",
+     eclipse_base_dir: "/home/{{ user }}"
+    }
