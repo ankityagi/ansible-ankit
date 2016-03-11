@@ -1,0 +1,10 @@
+---
+# file: docker-containers/vars/main.yml
+
+# determine if we should start containers 
+docker_internal_container_start: True
+# determine if we should remove server nodes
+docker_internal_container_remove: False
+docker_internal_container_idx_start: 0
+docker_internal_container_idx_end: 0
+

@@ -1,0 +1,4 @@
+---
+# file: docker-host/defaults/main.yml
+
+docker_reinstall: False 

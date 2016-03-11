@@ -1,0 +1,27 @@
+---
+- name: Install New Software  
+  hosts: ankit
+  vars:
+            user: ubuntu
+            group: ubuntu
+            ansible_ssh_user: ubuntu
+  roles:   
+  - sane
+  - java8-oracle
+  - docker-host
+
+
+# Create Jenkins host data dir if not exists already
+  tasks:
+  - name: ensure basic packages are installed
+    apt: name={{ item }} state=present
+    with_items:
+        - sshpass
+    become: yes
+  - name: Create jenkins data directory if not exists already
+    sudo: true
+    file: path=jenkins_data state=directory mode=777 
+  - name: Change permission for jenkins user 1000
+    shell: sudo chown 1000 jenkins_data
+  - name: Pull Jenkins Docker image, run it in background and attach jenkins_data dir
+    shell: docker run -d -p 8080:8080 -p 50000:50000 -v jenkins_data:/var/jenkins_home jenkins
