@@ -1,0 +1,15 @@
+---
+- name: Configure jenkins master for Vulcan  
+  hosts: ankit
+  sudo: yes
+  vars:
+            user: ubuntu
+            group: ubuntu
+            ansible_ssh_user: ubuntu
+
+  tasks:
+  - name: Copy vulcan key to jenkins machine
+    copy: src=new-vulcan-key.pem dest=/var/lib/jenkins/.ssh/ owner=jenkins group=jenkins mode=0644
+  - name: Ansible config file and roles
+    copy: src=~/.ansible.cfg dest=/etc/ansible/
+    copy: src=~/git/ansible2 dest=/home/ubuntu/ 

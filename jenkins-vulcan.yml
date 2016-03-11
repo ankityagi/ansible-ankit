@@ -1,0 +1,14 @@
+---
+- name: Install New Software  
+  hosts: ankit
+  vars:
+            user: ubuntu
+            group: ubuntu
+            ansible_ssh_user: ubuntu
+  roles:   
+#  - sane
+#  - java7-oracle
+#  - docker-host
+#  - jenkins
+#  - grails
+  - kbrebanov.ansible
